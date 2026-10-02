@@ -1,0 +1,10 @@
+# Apache configuration for Next.js static export under /allmarine/
+ErrorDocument 404 /allmarine/404.html
+
+RewriteEngine On
+RewriteBase /allmarine/
+
+# Redirect non-trailing-slash URLs to trailing-slash (matches next.config trailingSlash)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*[^/])$ /allmarine/$1/ [L,R=301]
